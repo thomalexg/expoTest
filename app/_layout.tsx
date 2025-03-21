@@ -1,39 +1,36 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
+import React from 'react';
 import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
+/**
+ * RootLayout component that defines the main layout of the application.
+ * It includes the StatusBar and the Stack navigator for handling different screens.
+ */
+const RootLayout = () => {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+      <>
+        {/* StatusBar configuration */}
+        <StatusBar style="auto" />
+
+        {/* Stack navigator configuration */}
+        <Stack
+            screenOptions={{
+              headerShown: false, // Hide headers for all screens by default
+            }}
+        >
+          {/* Auth Stack */}
+          <Stack.Screen
+              name="(auth)"
+              options={{
+                headerShown: false, // Hide header for auth screens
+                //gestureEnabled: false // Uncomment to disable swipe gestures for auth screens
+              }}
+          />
+
+
+          </Stack>
+      </>
   );
-}
+};
+
+export default RootLayout;
