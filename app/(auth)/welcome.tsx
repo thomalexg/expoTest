@@ -10,7 +10,7 @@ const Welcome = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={[styles.title, { fontFamily: 'MonomaniacOne-Regular' }]}>Welcome Page</Text>
+            <Text style={[styles.title, { transform: [{ rotate: '46deg' }], fontFamily: 'MonomaniacOne-Regular' }]}>Welcome Page</Text>
             <Button
                 title="Go to Signup"
                 onPress={() => router.push('/signUp')} // Navigate to the signup page
