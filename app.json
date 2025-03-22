@@ -40,7 +40,8 @@
         {
           "fonts": [
             "./assets/fonts/SpaceMono-Regular.ttf",
-            "./assets/fonts/MonomaniacOne-Regular.ttf"
+            "./assets/fonts/MonomaniacOne-Regular.ttf",
+            "./assets/fonts/MonomaniacOne-Regular.otf"
           ]
         }
       ]
